@@ -4,7 +4,7 @@ let wordList = [];
 fetch('word_list.json')
     .then(response => response.json())  // JSONに変換
     .then(data => {
-        wordList = data["語彙リスト のコピー"];  // 必要な配列部分を抽出
+        wordList = data["語彙リスト"];  // 必要な配列部分を抽出
     })
     .catch(error => console.error('Error loading JSON:', error));
 
