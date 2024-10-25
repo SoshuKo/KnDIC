@@ -17,31 +17,33 @@ function search() {
     console.log("検索ワード:", searchInput); // 検索ワード確認用
     console.log("検索フィールド:", searchField); // 検索フィールド確認用
 
-    let results = wordList.filter(item => {
-        const fieldValue = item[searchField] ? item[searchField].toLowerCase() : "";
-        console.log("検索対象フィールド値:", fieldValue); // フィールド値確認用
+let results = wordList.filter(item => {
+    const fieldValue = item[searchField];
 
-        switch (searchType) {
-            case "前方":
-                return fieldValue.startsWith(searchInput);
-            case "後方":
-                return fieldValue.endsWith(searchInput);
-            case "部分":
-                return fieldValue.includes(searchInput);
-            case "完全":
-                return fieldValue === searchInput;
-            case "正規":
-                try {
-                    const regex = new RegExp(searchInput, "i");
-                    return regex.test(fieldValue);
-                } catch (e) {
-                    console.error("正規表現エラー:", e);
-                    return false;
-                }
-            default:
+    // `fieldValue`が存在し、かつ文字列である場合のみ小文字に変換
+    const normalizedFieldValue = typeof fieldValue === "string" ? fieldValue.toLowerCase() : "";
+
+    switch (searchType) {
+        case "前方":
+            return normalizedFieldValue.startsWith(searchInput);
+        case "後方":
+            return normalizedFieldValue.endsWith(searchInput);
+        case "部分":
+            return normalizedFieldValue.includes(searchInput);
+        case "完全":
+            return normalizedFieldValue === searchInput;
+        case "正規":
+            try {
+                const regex = new RegExp(searchInput, "i");
+                return regex.test(normalizedFieldValue);
+            } catch (e) {
+                console.error("正規表現エラー:", e);
                 return false;
-        }
-    });
+            }
+        default:
+            return false;
+    }
+});
 
     // ソート
     results.sort((a, b) => {
