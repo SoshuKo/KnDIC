@@ -1,10 +1,10 @@
 let wordList = [];
 
 // JSONデータを読み込む
-fetch('word_list.json')
+fetch('クニューン語_造語機_02.json')
     .then(response => response.json())  // JSONに変換
     .then(data => {
-        wordList = data;  // 配列として代入
+        wordList = data["語彙リスト のコピー"];  // 必要な配列部分を抽出
     })
     .catch(error => console.error('Error loading JSON:', error));
 
