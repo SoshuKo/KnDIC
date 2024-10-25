@@ -1,7 +1,7 @@
 let wordList = [];
 
 // JSONデータを読み込む
-fetch('クニューン語_造語機_02.json')
+fetch('word_list.json')
     .then(response => response.json())  // JSONに変換
     .then(data => {
         wordList = data["語彙リスト のコピー"];  // 必要な配列部分を抽出
