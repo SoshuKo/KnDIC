@@ -56,3 +56,11 @@ h1 {
     font-family: 'KniunArt';
     color: #F09000;
 }
+
+/* ここからメディアクエリ */
+@media only screen and (min-device-pixel-ratio: 2), 
+       only screen and (-webkit-min-device-pixel-ratio: 2), 
+       only screen and (min-resolution: 192dpi), 
+       only screen and (min-resolution: 2dppx) {
+    /* ここにハイレゾ用のスタイルを記述 */
+}
