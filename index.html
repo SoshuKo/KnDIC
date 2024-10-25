@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>単語検索サイト</title>
+    <style>
+        /* 簡単なスタイル */
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: 0 auto; }
+        #results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>単語検索サイト</h1>
+        
+        <!-- 検索オプション -->
+        <div id="search-options">
+            <label for="search-field">検索フィールド:</label>
+            <select id="search-field">
+                <option value="語根">語根</option>
+                <option value="品詞">品詞</option>
+                <option value="クラス">クラス</option>
+                <option value="単語">単語</option>
+                <option value="訳語">訳語</option>
+                <option value="注釈">注釈</option>
+            </select>
+
+            <label for="search-type">検索タイプ:</label>
+            <select id="search-type">
+                <option value="前方">前方一致</option>
+                <option value="後方">後方一致</option>
+                <option value="部分">部分一致</option>
+                <option value="完全">完全一致</option>
+                <option value="正規">正規表現</option>
+            </select>
+
+            <label for="order">表示順:</label>
+            <select id="order">
+                <option value="asc">昇順</option>
+                <option value="desc">降順</option>
+            </select>
+
+            <input type="text" id="search-input" placeholder="検索ワード">
+            <button onclick="search()">検索</button>
+        </div>
+        
+        <!-- 結果表示 -->
+        <div id="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
