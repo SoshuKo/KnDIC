@@ -4,7 +4,7 @@ let wordList = [];
 fetch('word_list.json')
     .then(response => response.json())  // JSONに変換
     .then(data => {
-        wordList = data["語彙リスト"];  // 必要な配列部分を抽出
+        wordList = data["語彙リスト"];
     })
     .catch(error => console.error('Error loading JSON:', error));
 
@@ -56,7 +56,19 @@ function displayResults(results) {
 
     results.forEach(item => {
         const resultItem = document.createElement("div");
-        resultItem.textContent = `${item["単語"]}: ${item["訳語"]}`;
+        resultItem.classList.add("result-item");
+
+        resultItem.innerHTML = `
+            <strong>番号:</strong> ${item["番号"]} <br>
+            <strong>語根:</strong> ${item["語根"]} <br>
+            <strong>品詞:</strong> ${item["品詞"]} <br>
+            <strong>クラス:</strong> ${item["クラス"]} <br>
+            <strong>単語:</strong> ${item["単語"]} <br>
+            <strong>文字:</strong> <span class="character">${item["文字"]}</span> <br>
+            <strong>発音:</strong> ${item["発音"]} <br>
+            <strong>訳語:</strong> ${item["訳語"]} <br>
+            <strong>注釈:</strong> ${item["注釈"] || "-"} <br>
+        `;
         resultsDiv.appendChild(resultItem);
     });
 }
