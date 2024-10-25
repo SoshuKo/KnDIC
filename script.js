@@ -68,6 +68,7 @@ function displayResults(results) {
             <strong>発音:</strong> ${item["発音"]} <br>
             <strong>訳語:</strong> ${item["訳語"]} <br>
             <strong>注釈:</strong> ${item["注釈"] || "-"} <br>
+            <hr> <!-- 各項目の区切り -->
         `;
         resultsDiv.appendChild(resultItem);
     });
