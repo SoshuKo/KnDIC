@@ -1,9 +1,12 @@
 let wordList = [];
 
-// JSONデータを読み込み
+// JSONデータを読み込む
 fetch('word_list.json')
-    .then(response => response.json())
-    .then(data => { wordList = data; });
+    .then(response => response.json())  // JSONに変換
+    .then(data => {
+        wordList = data;  // 配列として代入
+    })
+    .catch(error => console.error('Error loading JSON:', error));
 
 // 検索機能
 function search() {
