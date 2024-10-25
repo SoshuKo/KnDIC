@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8f0;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    color: #F09000;
+}
+
+#search-options {
+    background-color: #F09000;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+#search-options label,
+#search-options select,
+#search-options input,
+#search-options button {
+    margin: 5px;
+    font-size: 1em;
+}
+
+#search-options button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#search-options button:hover {
+    background-color: #555;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+.result-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.result-item .character {
+    font-family: 'KniunArt';
+    color: #F09000;
+}
