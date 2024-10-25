@@ -13,37 +13,40 @@ function search() {
     const searchType = document.getElementById("search-type").value;
     const order = document.getElementById("order").value;
     const searchInput = document.getElementById("search-input").value.toLowerCase();
-    
-    console.log("検索ワード:", searchInput); // 検索ワード確認用
-    console.log("検索フィールド:", searchField); // 検索フィールド確認用
 
-let results = wordList.filter(item => {
-    const fieldValue = item[searchField];
+    let results = wordList.filter(item => {
+        // `fieldValue`が未定義またはnullの場合は空文字に
+        const fieldValue = item[searchField] ? item[searchField] : "";
 
-    // `fieldValue`が存在し、かつ文字列である場合のみ小文字に変換
-    const normalizedFieldValue = typeof fieldValue === "string" ? fieldValue.toLowerCase() : "";
+        // `fieldValue`が文字列型の場合のみ小文字に変換
+        const normalizedFieldValue = typeof fieldValue === "string" ? fieldValue.toLowerCase() : "";
 
-    switch (searchType) {
-        case "前方":
-            return normalizedFieldValue.startsWith(searchInput);
-        case "後方":
-            return normalizedFieldValue.endsWith(searchInput);
-        case "部分":
-            return normalizedFieldValue.includes(searchInput);
-        case "完全":
-            return normalizedFieldValue === searchInput;
-        case "正規":
-            try {
-                const regex = new RegExp(searchInput, "i");
-                return regex.test(normalizedFieldValue);
-            } catch (e) {
-                console.error("正規表現エラー:", e);
+        switch (searchType) {
+            case "前方":
+                return normalizedFieldValue.startsWith(searchInput);
+            case "後方":
+                return normalizedFieldValue.endsWith(searchInput);
+            case "部分":
+                return normalizedFieldValue.includes(searchInput);
+            case "完全":
+                return normalizedFieldValue === searchInput;
+            case "正規":
+                try {
+                    const regex = new RegExp(searchInput, "i");
+                    return regex.test(normalizedFieldValue);
+                } catch (e) {
+                    console.error("正規表現エラー:", e);
+                    return false;
+                }
+            default:
                 return false;
-            }
-        default:
-            return false;
-    }
-});
+        }
+    });
+
+    // 結果の表示
+    displayResults(results);
+}
+
 
     // ソート
     results.sort((a, b) => {
