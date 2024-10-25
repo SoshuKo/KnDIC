@@ -1,6 +1,6 @@
 let wordList = [];
 
-// JSONデータを読み込む
+// JSONデータを、読み込む
 fetch('word_list.json')
     .then(response => response.json())  // JSONに変換
     .then(data => {
