@@ -8,15 +8,18 @@ fetch('word_list.json')
     })
     .catch(error => console.error('Error loading JSON:', error));
 
-// 検索機能
 function search() {
     const searchField = document.getElementById("search-field").value;
     const searchType = document.getElementById("search-type").value;
     const order = document.getElementById("order").value;
     const searchInput = document.getElementById("search-input").value.toLowerCase();
     
+    console.log("検索ワード:", searchInput); // 検索ワード確認用
+    console.log("検索フィールド:", searchField); // 検索フィールド確認用
+
     let results = wordList.filter(item => {
         const fieldValue = item[searchField] ? item[searchField].toLowerCase() : "";
+        console.log("検索対象フィールド値:", fieldValue); // フィールド値確認用
 
         switch (searchType) {
             case "前方":
